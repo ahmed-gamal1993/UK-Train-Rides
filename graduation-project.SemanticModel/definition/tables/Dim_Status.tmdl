@@ -1,0 +1,40 @@
+table Dim_Status
+	lineageTag: 7ff6d8c8-d116-47f7-9f0b-fa54f31a0638
+
+	column Status_ID
+		dataType: string
+		lineageTag: 8406babf-d531-493f-9290-ffba68be2713
+		summarizeBy: none
+		sourceColumn: Status_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Journey Status'
+		dataType: string
+		lineageTag: 5c06deee-c695-4526-80e7-523e4a65de24
+		summarizeBy: none
+		sourceColumn: Journey Status
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Status = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("D:\Data_Analytics\Datasets\UK Train Rides\railway.csv"),[Delimiter=",", Columns=18, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Transaction ID", type text}, {"Date of Purchase", type date}, {"Time of Purchase", type time}, {"Purchase Type", type text}, {"Payment Method", type text}, {"Railcard", type text}, {"Ticket Class", type text}, {"Ticket Type", type text}, {"Price", Int64.Type}, {"Departure Station", type text}, {"Arrival Destination", type text}, {"Date of Journey", type date}, {"Departure Time", type time}, {"Arrival Time", type time}, {"Actual Arrival Time", type time}, {"Journey Status", type text}, {"Reason for Delay", type text}, {"Refund Request", type text}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type",{"Journey Status"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns"),
+				    #"Added Index" = Table.AddIndexColumn(#"Removed Duplicates", "Index", 1, 1, Int64.Type),
+				    #"Renamed Columns" = Table.RenameColumns(#"Added Index",{{"Index", "Status_ID"}}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Renamed Columns",{{"Status_ID", type text}}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Changed Type1",{"Status_ID", "Journey Status"}),
+				    #"Added Prefix" = Table.TransformColumns(#"Reordered Columns", {{"Status_ID", each "STS" & _, type text}})
+				in
+				    #"Added Prefix"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

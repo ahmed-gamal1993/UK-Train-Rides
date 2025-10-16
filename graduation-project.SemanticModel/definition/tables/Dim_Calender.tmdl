@@ -1,0 +1,104 @@
+table Dim_Calender
+	lineageTag: 3e9e5d53-341a-4cfe-82f5-7b305a7bfa27
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b346cdac-f42f-4380-815f-85dca459e6ec
+		summarizeBy: none
+		sourceColumn: Date
+
+		variation Variation
+			isDefault
+			relationship: f0717aec-c625-45af-9bef-8b0113d118ed
+			defaultHierarchy: LocalDateTable_fe4fcbf0-4b04-436b-88fa-3ec4bf17e06f.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: c1b118df-6264-475b-b4a7-09826f1104a9
+		summarizeBy: sum
+		sourceColumn: Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column Quarter
+		dataType: string
+		lineageTag: b3ae709a-dea9-438a-af6a-7900077e1050
+		summarizeBy: none
+		sourceColumn: Quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Week Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: e505e9c1-fb52-44a0-9ab9-21a999a2cb2f
+		summarizeBy: sum
+		sourceColumn: Week Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Number'
+		dataType: int64
+		formatString: 0
+		lineageTag: 0650c985-ea1c-4b54-88ff-b6b54568e75b
+		summarizeBy: sum
+		sourceColumn: Month Number
+
+		annotation SummarizationSetBy = Automatic
+
+	column Month
+		dataType: string
+		lineageTag: edf44d63-d16f-4bf8-8256-bc2b8f8fccf6
+		summarizeBy: none
+		sourceColumn: Month
+		sortByColumn: YearMonth
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day of Week'
+		dataType: string
+		lineageTag: 81979944-3406-49b3-bd05-e339badb6641
+		summarizeBy: none
+		sourceColumn: Day of Week
+
+		annotation SummarizationSetBy = Automatic
+
+	column YearMonth = FORMAT(Dim_Calender[Year], "0000") & FORMAT(Dim_Calender[Month Number], "00")
+		lineageTag: 2c1035e5-7faf-44bf-969b-25793446cfcb
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Year' = ```
+			FORMAT(Dim_Calender[Date], "MMM YYYY")
+			
+			```
+		lineageTag: 4f067a20-1e03-4106-8ab3-222c3a026c06
+		summarizeBy: none
+		sortByColumn: YearMonth
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Calender = m
+		mode: import
+		source =
+				let
+				    Source = #"Create Date"(#date(2023, 12, 1), #date(2024, 5, 1)),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Date", type date}, {"Year", Int64.Type}, {"Quarter", type text}, {"Week Number", Int64.Type}, {"Month Number", Int64.Type}, {"Month", type text}, {"Day of Week", type text}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

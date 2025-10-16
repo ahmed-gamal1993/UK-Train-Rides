@@ -1,0 +1,40 @@
+table Dim_Payment
+	lineageTag: 8f83a086-c4fb-4e9f-97f3-2bafe5752ccc
+
+	column Payment_ID
+		dataType: string
+		lineageTag: f45751d5-7c4d-4b8e-b49c-8974d374334f
+		summarizeBy: none
+		sourceColumn: Payment_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Payment Method'
+		dataType: string
+		lineageTag: 9b41a3df-0762-489a-b9d5-75da3176dd1e
+		summarizeBy: none
+		sourceColumn: Payment Method
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Payment = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("D:\Data_Analytics\Datasets\UK Train Rides\railway.csv"),[Delimiter=",", Columns=18, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Transaction ID", type text}, {"Date of Purchase", type date}, {"Time of Purchase", type time}, {"Purchase Type", type text}, {"Payment Method", type text}, {"Railcard", type text}, {"Ticket Class", type text}, {"Ticket Type", type text}, {"Price", Int64.Type}, {"Departure Station", type text}, {"Arrival Destination", type text}, {"Date of Journey", type date}, {"Departure Time", type time}, {"Arrival Time", type time}, {"Actual Arrival Time", type time}, {"Journey Status", type text}, {"Reason for Delay", type text}, {"Refund Request", type text}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type",{"Payment Method"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns"),
+				    #"Added Index" = Table.AddIndexColumn(#"Removed Duplicates", "Index", 1, 1, Int64.Type),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Added Index",{"Index", "Payment Method"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Reordered Columns",{{"Index", type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type1",{{"Index", "Payment_ID"}}),
+				    #"Added Prefix" = Table.TransformColumns(#"Renamed Columns", {{"Payment_ID", each "PAY" & _, type text}})
+				in
+				    #"Added Prefix"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

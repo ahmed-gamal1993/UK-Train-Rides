@@ -1,0 +1,18 @@
+table 'Satisfaction Measures'
+	lineageTag: 89d0973c-6416-41e4-abe8-0ace4037482f
+
+	measure 'Measure 3' = ""
+		lineageTag: f4dd30a4-e93f-481c-8ba7-6f11de3fd730
+
+	partition 'Satisfaction Measures' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	annotation PBI_ResultType = Table
+

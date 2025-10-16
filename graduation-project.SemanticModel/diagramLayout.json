@@ -1,0 +1,229 @@
+{
+  "version": "1.1.0",
+  "diagrams": [
+    {
+      "ordinal": 0,
+      "scrollPosition": {
+        "x": 1216.7561642896553,
+        "y": 2606.0360987162589
+      },
+      "nodes": [
+        {
+          "location": {
+            "x": 50,
+            "y": 3775.4404930392625
+          },
+          "nodeIndex": "Dim_Arrival",
+          "nodeLineageTag": "d9797e13-3af7-410b-8084-181e6a98be11",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 1161.4875670158647,
+            "y": 3593.5309291397857
+          },
+          "nodeIndex": "Dim_Calender",
+          "nodeLineageTag": "3e9e5d53-341a-4cfe-82f5-7b305a7bfa27",
+          "size": {
+            "height": 256.9075556985789,
+            "width": 234
+          },
+          "zIndex": 16
+        },
+        {
+          "location": {
+            "x": 508.1144398503792,
+            "y": 4142.3144273611924
+          },
+          "nodeIndex": "Dim_Delay",
+          "nodeLineageTag": "bf2f5251-4e61-4999-9b44-50601ae7303a",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 15
+        },
+        {
+          "location": {
+            "x": 360.36253987431678,
+            "y": 3836.6813060221757
+          },
+          "nodeIndex": "Dim_Departure",
+          "nodeLineageTag": "5d4b8f24-0f7a-400f-81d2-42f120d0fd5e",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 8
+        },
+        {
+          "location": {
+            "x": 625.03727351282907,
+            "y": 3849.489656501426
+          },
+          "nodeIndex": "Dim_Payment",
+          "nodeLineageTag": "8f83a086-c4fb-4e9f-97f3-2bafe5752ccc",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 9
+        },
+        {
+          "location": {
+            "x": 933.72451003007518,
+            "y": 3442.3096316940851
+          },
+          "nodeIndex": "Dim_Purchase",
+          "nodeLineageTag": "14b87f61-9852-4a27-884d-899984875513",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 10
+        },
+        {
+          "location": {
+            "x": 331.78550302551776,
+            "y": 3540.871604111242
+          },
+          "nodeIndex": "Dim_Railcard",
+          "nodeLineageTag": "00478045-d603-4046-92b1-5f38e959a9a2",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 11
+        },
+        {
+          "location": {
+            "x": 1379.2650091733965,
+            "y": 4125.1850017970073
+          },
+          "nodeIndex": "Dim_Status",
+          "nodeLineageTag": "7ff6d8c8-d116-47f7-9f0b-fa54f31a0638",
+          "size": {
+            "height": 128,
+            "width": 234
+          },
+          "zIndex": 12
+        },
+        {
+          "location": {
+            "x": 1443.9308992765225,
+            "y": 3756.4678196734435
+          },
+          "nodeIndex": "Dim_Ticket",
+          "nodeLineageTag": "cbaa3f59-b1ae-4911-8d61-9ad66883baf3",
+          "size": {
+            "height": 152,
+            "width": 234
+          },
+          "zIndex": 13
+        },
+        {
+          "location": {
+            "x": 931.77481520923334,
+            "y": 3917.7796511380393
+          },
+          "nodeIndex": "Fact_Transaction",
+          "nodeLineageTag": "df417e1c-8ae5-4075-b124-7e19c3128430",
+          "size": {
+            "height": 300,
+            "width": 234
+          },
+          "zIndex": 14
+        },
+        {
+          "location": {
+            "x": 2465.3751165684444,
+            "y": 2896.6985554516873
+          },
+          "nodeIndex": "Passenger Measures",
+          "nodeLineageTag": "c7f7d583-fe26-4164-8757-6703e69c9106",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 18
+        },
+        {
+          "location": {
+            "x": 2787.75938756678,
+            "y": 2748.3731456578107
+          },
+          "nodeIndex": "Station Measures",
+          "nodeLineageTag": "678d8d9b-ce1f-4d7c-88cc-6f44d9909fa8",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 3
+        },
+        {
+          "location": {
+            "x": 2786.0679982378842,
+            "y": 2607.7377196771058
+          },
+          "nodeIndex": "Satisfaction Measures",
+          "nodeLineageTag": "89d0973c-6416-41e4-abe8-0ace4037482f",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 17
+        },
+        {
+          "location": {
+            "x": 2464.2291384039058,
+            "y": 2752.6235303918579
+          },
+          "nodeIndex": "Financial Measures",
+          "nodeLineageTag": "77fc8b29-84dd-47df-979c-a0dec0f5c1c3",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 4
+        },
+        {
+          "location": {
+            "x": 2464.5018439860846,
+            "y": 2606.0360987162589
+          },
+          "nodeIndex": "Hero Station Measures",
+          "nodeLineageTag": "ab5b8dad-e298-40f2-b55c-3e5ed08b2c8e",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 5
+        },
+        {
+          "location": {
+            "x": 2786.8860550450008,
+            "y": 3039.724410086882
+          },
+          "nodeIndex": "Ticket Measures.",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
+        }
+      ],
+      "name": "All tables",
+      "zoomValue": 50.914036504127878,
+      "pinKeyFieldsToTop": false,
+      "showExtraHeaderInfo": false,
+      "hideKeyFieldsWhenCollapsed": false,
+      "tablesLocked": false
+    }
+  ],
+  "selectedDiagram": "All tables",
+  "defaultDiagram": "All tables"
+}

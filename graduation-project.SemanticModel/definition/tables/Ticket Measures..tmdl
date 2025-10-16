@@ -1,0 +1,20 @@
+table 'Ticket Measures.'
+	lineageTag: fdcf2d44-889c-427c-bfb7-ebf4b7131e9c
+
+	measure Measure = ""
+		lineageTag: 285ca7ed-2ebf-4de3-b918-b7b2c88980c2
+
+	partition 'Ticket Measures.' = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Column1 = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Column1"})
+				in
+				    #"Removed Columns"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

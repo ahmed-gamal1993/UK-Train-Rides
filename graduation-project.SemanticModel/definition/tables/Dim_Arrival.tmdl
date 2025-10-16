@@ -1,0 +1,40 @@
+table Dim_Arrival
+	lineageTag: d9797e13-3af7-410b-8084-181e6a98be11
+
+	column Arrival_ID
+		dataType: string
+		lineageTag: fac631da-c516-436d-a951-1673bf8bf718
+		summarizeBy: none
+		sourceColumn: Arrival_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Arrival Destination'
+		dataType: string
+		lineageTag: e29fd124-d5b3-45de-abe2-989f02a045ec
+		summarizeBy: none
+		sourceColumn: Arrival Destination
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Dim_Arrival = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("D:\Data_Analytics\Datasets\UK Train Rides\railway.csv"),[Delimiter=",", Columns=18, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Transaction ID", type text}, {"Date of Purchase", type date}, {"Time of Purchase", type time}, {"Purchase Type", type text}, {"Payment Method", type text}, {"Railcard", type text}, {"Ticket Class", type text}, {"Ticket Type", type text}, {"Price", Int64.Type}, {"Departure Station", type text}, {"Arrival Destination", type text}, {"Date of Journey", type date}, {"Departure Time", type time}, {"Arrival Time", type time}, {"Actual Arrival Time", type time}, {"Journey Status", type text}, {"Reason for Delay", type text}, {"Refund Request", type text}}),
+				    #"Removed Other Columns" = Table.SelectColumns(#"Changed Type",{"Arrival Destination"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Removed Other Columns"),
+				    #"Added Index" = Table.AddIndexColumn(#"Removed Duplicates", "Index", 1, 1, Int64.Type),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Added Index",{"Index", "Arrival Destination"}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Reordered Columns",{{"Index", type text}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type1",{{"Index", "Arrival_ID"}}),
+				    #"Added Prefix" = Table.TransformColumns(#"Renamed Columns", {{"Arrival_ID", each "ARR" & _, type text}})
+				in
+				    #"Added Prefix"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

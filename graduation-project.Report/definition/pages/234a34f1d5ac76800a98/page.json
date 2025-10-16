@@ -1,0 +1,8 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "name": "234a34f1d5ac76800a98",
+  "displayName": "Passenger Analysis",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280
+}
