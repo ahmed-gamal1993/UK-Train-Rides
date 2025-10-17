@@ -34,6 +34,9 @@ ref table 'Satisfaction Measures'
 ref table 'Financial Measures'
 ref table 'Hero Station Measures'
 ref table 'Ticket Measures.'
+ref table DepartureRevenue
+ref table ArrivalRevenue
+ref table 'Station Revenue Combined'
 
 ref cultureInfo en-US
 
