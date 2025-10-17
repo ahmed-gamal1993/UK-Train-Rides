@@ -14,7 +14,5 @@ table 'Ticket Measures.'
 				in
 				    #"Removed Columns"
 
-	changedProperty = Name
-
 	annotation PBI_ResultType = Table
 

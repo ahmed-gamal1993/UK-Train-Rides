@@ -1,8 +1,97 @@
 table 'Station Measures'
 	lineageTag: 678d8d9b-ce1f-4d7c-88cc-6f44d9909fa8
 
-	measure 'Measure 2' = ""
+	measure 'Avg Delay per Station' =
+			
+			AVERAGEX(
+			    FILTER(
+			        'Fact_Transaction',
+			        NOT(ISBLANK('Fact_Transaction'[Arrival Time]))
+			            && NOT(ISBLANK('Fact_Transaction'[Actual Arrival Time]))
+			    ),
+			    DATEDIFF(
+			        'Fact_Transaction'[Arrival Time],
+			        'Fact_Transaction'[Actual Arrival Time],
+			        MINUTE
+			    )
+			)
 		lineageTag: 93e632b9-e047-44bf-8f96-534c0aa294b6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Complaints Count' = ```
+			
+			COUNTROWS(
+			    FILTER(
+			        'Fact_Transaction',
+			        NOT(ISBLANK('Fact_Transaction'[Delay_ID]))
+			    )
+			)
+			
+			```
+		formatString: 0
+		lineageTag: b605a6b2-4e00-481c-a3a4-33f0b98dee90
+
+	measure 'Total Revenue' =
+			
+			SUM('Fact_Transaction'[Price])
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 61e729f3-ead8-44ca-ae86-dfe8d0104733
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Passenger Count' = ```
+			COUNTROWS('Fact_Transaction')
+			
+			```
+		formatString: 0
+		lineageTag: 5e954ceb-93d8-4e59-98c0-75cf6f945170
+
+	measure 'Total Delay Minutes' = ```
+			
+			SUMX(
+			    FILTER(
+			        'Fact_Transaction',
+			        NOT(ISBLANK('Fact_Transaction'[Arrival Time])) &&
+			        NOT(ISBLANK('Fact_Transaction'[Actual Arrival Time]))
+			    ),
+			    DATEDIFF(
+			        'Fact_Transaction'[Arrival Time],
+			        'Fact_Transaction'[Actual Arrival Time],
+			        MINUTE
+			    )
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 64670a2a-e683-44ae-968e-16550bc67d4a
+
+	measure '% of Delayed Trips' =
+			
+			DIVIDE([Complaints Count], [Passenger Count], 0)
+		formatString: 0%;-0%;0%
+		lineageTag: 24e57fec-9f86-447f-8eb1-cb4e9eef1964
+
+	measure 'Revenue per Passenger' = ```
+			
+			DIVIDE([Total Revenue], [Passenger Count], 0)
+			
+			```
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: b37a4bb3-1711-4948-baa1-49afa441b88a
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	measure 'Passengers YTD' = ```
+			
+			CALCULATE(
+			    [Passenger Count],
+			    DATESYTD('Dim_Calender'[Date])
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 3c08f411-5fe9-49c8-8e78-93f0507171e7
 
 	partition 'Station Measures' = m
 		mode: import
