@@ -4,14 +4,14 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 1216.7561642896553,
-        "y": 2606.0360987162589
+        "x": 2464.480406844822,
+        "y": 8105.8496285545216
       },
       "nodes": [
         {
           "location": {
             "x": 50,
-            "y": 3775.4404930392625
+            "y": 9635.6558835036412
           },
           "nodeIndex": "Dim_Arrival",
           "nodeLineageTag": "d9797e13-3af7-410b-8084-181e6a98be11",
@@ -24,7 +24,7 @@
         {
           "location": {
             "x": 1161.4875670158647,
-            "y": 3593.5309291397857
+            "y": 9453.7463196041645
           },
           "nodeIndex": "Dim_Calender",
           "nodeLineageTag": "3e9e5d53-341a-4cfe-82f5-7b305a7bfa27",
@@ -37,7 +37,7 @@
         {
           "location": {
             "x": 508.1144398503792,
-            "y": 4142.3144273611924
+            "y": 10002.529817825571
           },
           "nodeIndex": "Dim_Delay",
           "nodeLineageTag": "bf2f5251-4e61-4999-9b44-50601ae7303a",
@@ -50,7 +50,7 @@
         {
           "location": {
             "x": 360.36253987431678,
-            "y": 3836.6813060221757
+            "y": 9696.896696486554
           },
           "nodeIndex": "Dim_Departure",
           "nodeLineageTag": "5d4b8f24-0f7a-400f-81d2-42f120d0fd5e",
@@ -63,7 +63,7 @@
         {
           "location": {
             "x": 625.03727351282907,
-            "y": 3849.489656501426
+            "y": 9709.7050469658043
           },
           "nodeIndex": "Dim_Payment",
           "nodeLineageTag": "8f83a086-c4fb-4e9f-97f3-2bafe5752ccc",
@@ -76,7 +76,7 @@
         {
           "location": {
             "x": 933.72451003007518,
-            "y": 3442.3096316940851
+            "y": 9302.5250221584629
           },
           "nodeIndex": "Dim_Purchase",
           "nodeLineageTag": "14b87f61-9852-4a27-884d-899984875513",
@@ -89,7 +89,7 @@
         {
           "location": {
             "x": 331.78550302551776,
-            "y": 3540.871604111242
+            "y": 9401.08699457562
           },
           "nodeIndex": "Dim_Railcard",
           "nodeLineageTag": "00478045-d603-4046-92b1-5f38e959a9a2",
@@ -102,7 +102,7 @@
         {
           "location": {
             "x": 1379.2650091733965,
-            "y": 4125.1850017970073
+            "y": 9985.4003922613847
           },
           "nodeIndex": "Dim_Status",
           "nodeLineageTag": "7ff6d8c8-d116-47f7-9f0b-fa54f31a0638",
@@ -115,7 +115,7 @@
         {
           "location": {
             "x": 1443.9308992765225,
-            "y": 3756.4678196734435
+            "y": 9616.6832101378222
           },
           "nodeIndex": "Dim_Ticket",
           "nodeLineageTag": "cbaa3f59-b1ae-4911-8d61-9ad66883baf3",
@@ -128,7 +128,7 @@
         {
           "location": {
             "x": 931.77481520923334,
-            "y": 3917.7796511380393
+            "y": 9777.9950416024167
           },
           "nodeIndex": "Fact_Transaction",
           "nodeLineageTag": "df417e1c-8ae5-4075-b124-7e19c3128430",
@@ -141,7 +141,7 @@
         {
           "location": {
             "x": 2465.3751165684444,
-            "y": 2896.6985554516873
+            "y": 8756.9139459160651
           },
           "nodeIndex": "Passenger Measures",
           "nodeLineageTag": "c7f7d583-fe26-4164-8757-6703e69c9106",
@@ -154,7 +154,7 @@
         {
           "location": {
             "x": 2787.75938756678,
-            "y": 2748.3731456578107
+            "y": 8608.5885361221881
           },
           "nodeIndex": "Station Measures",
           "nodeLineageTag": "678d8d9b-ce1f-4d7c-88cc-6f44d9909fa8",
@@ -162,12 +162,12 @@
             "height": 104,
             "width": 234
           },
-          "zIndex": 3
+          "zIndex": 4
         },
         {
           "location": {
             "x": 2786.0679982378842,
-            "y": 2607.7377196771058
+            "y": 8467.9531101414832
           },
           "nodeIndex": "Satisfaction Measures",
           "nodeLineageTag": "89d0973c-6416-41e4-abe8-0ace4037482f",
@@ -180,23 +180,10 @@
         {
           "location": {
             "x": 2464.2291384039058,
-            "y": 2752.6235303918579
+            "y": 8612.8389208562367
           },
           "nodeIndex": "Financial Measures",
           "nodeLineageTag": "77fc8b29-84dd-47df-979c-a0dec0f5c1c3",
-          "size": {
-            "height": 104,
-            "width": 234
-          },
-          "zIndex": 4
-        },
-        {
-          "location": {
-            "x": 2464.5018439860846,
-            "y": 2606.0360987162589
-          },
-          "nodeIndex": "Hero Station Measures",
-          "nodeLineageTag": "ab5b8dad-e298-40f2-b55c-3e5ed08b2c8e",
           "size": {
             "height": 104,
             "width": 234
@@ -205,19 +192,69 @@
         },
         {
           "location": {
+            "x": 2464.5018439860846,
+            "y": 8466.2514891806368
+          },
+          "nodeIndex": "Hero Station Measures",
+          "nodeLineageTag": "ab5b8dad-e298-40f2-b55c-3e5ed08b2c8e",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 6
+        },
+        {
+          "location": {
             "x": 2786.8860550450008,
-            "y": 3039.724410086882
+            "y": 8899.93980055126
           },
           "nodeIndex": "Ticket Measures.",
           "size": {
             "height": 104,
             "width": 234
           },
+          "zIndex": 1
+        },
+        {
+          "location": {
+            "x": 3021.75938756678,
+            "y": 6592.3545547868434
+          },
+          "nodeIndex": "DepartureRevenue",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 2
+        },
+        {
+          "location": {
+            "x": 3306.8258552547072,
+            "y": 6588.8568452583586
+          },
+          "nodeIndex": "ArrivalRevenue",
+          "nodeLineageTag": "52763091-bc9d-4c15-9328-7220c210bb52",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
+          "zIndex": 19
+        },
+        {
+          "location": {
+            "x": 3540.8258552547072,
+            "y": 3867.1221013697254
+          },
+          "nodeIndex": "Station Revenue Combined",
+          "size": {
+            "height": 200,
+            "width": 234
+          },
           "zIndex": 0
         }
       ],
       "name": "All tables",
-      "zoomValue": 50.914036504127878,
+      "zoomValue": 127.11807487400262,
       "pinKeyFieldsToTop": false,
       "showExtraHeaderInfo": false,
       "hideKeyFieldsWhenCollapsed": false,
